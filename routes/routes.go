@@ -12,5 +12,6 @@ func HandleRequests() {
 	r.GET("/ping", ping)
 	r.GET("/alunos", controllers.ExibeTodosAlunos)
 	r.GET("/:nome", controllers.Saudacao)
+	r.POST("/alunos", controllers.CriaNovoAluno)
 	r.Run()
 }
