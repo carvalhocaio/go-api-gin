@@ -1,22 +1,15 @@
 package main
 
-import "github.com/gin-gonic/gin"
-
-func ExibeTodosAlunos(c *gin.Context) {
-	c.JSON(200, gin.H{
-		"id":   "22",
-		"nome": "Han Solo",
-	})
-}
+import (
+	"github.com/carvalhocaio/go-api-gin/models"
+	"github.com/carvalhocaio/go-api-gin/routes"
+)
 
 func main() {
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
-	r.GET("/alunos", ExibeTodosAlunos)
+	models.Alunos = []models.Aluno{
+		{Nome: "Darth Vader", CPF: "00000000000", RG: "00000000"},
+		{Nome: "Leia Organa", CPF: "00000000001", RG: "00000001"},
+	}
 
-	r.Run()
+	routes.HandleRequests()
 }
